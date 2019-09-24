@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma' #, '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -46,10 +46,13 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'bulma-rails'
 gem 'sidekiq'
+gem 'bulma-rails'
+gem 'simple_form'
+gem 'apartment', github: 'influitive/apartment', branch: 'development'
 group :development, :test do
   gem 'better_errors'
+  gem 'pry-rails'
   gem 'guard'
   gem 'guard-livereload'
 end
