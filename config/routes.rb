@@ -9,6 +9,7 @@ end
 
 Rails.application.routes.draw do
 
+  resources :exercizes
   # resources :exercises
 
   constraints Subdomain do

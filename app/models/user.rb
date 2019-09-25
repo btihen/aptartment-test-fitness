@@ -8,6 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, request_keys: [:subdomain] # :validatable
 
+  has_many :workouts, dependent: :destroy
+
   validates :email, uniqueness: true
 
   private
