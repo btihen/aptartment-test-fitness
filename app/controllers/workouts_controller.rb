@@ -27,7 +27,6 @@ class WorkoutsController < ApplicationController
   # POST /workouts
   # POST /workouts.json
   def create
-binding.pry
     # @workout = Workout.new(workout_params)
     @workout = current_user.workouts.build(workout_params)
 
