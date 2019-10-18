@@ -17,7 +17,7 @@ class WorkoutsController < ApplicationController
   def new
     @workout = Workout.new
     @workout.exercises.build
-    @workout.user.id = current_user.id
+    @workout.user_id = current_user.id
   end
 
   # GET /workouts/1/edit
@@ -75,6 +75,6 @@ class WorkoutsController < ApplicationController
     def workout_params
       params.require(:workout).
             permit(:title, :date,
-                    excersizes_attributes: [:id, :_destroy, :name, :sets, :weight])
+                    exercises_attributes: [:id, :_destroy, :name, :sets, :weight])
     end
 end

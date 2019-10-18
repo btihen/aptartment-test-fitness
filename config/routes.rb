@@ -9,14 +9,14 @@ end
 
 Rails.application.routes.draw do
 
-  resources :exercizes
   # resources :exercises
 
   constraints Subdomain do
-    resources :workouts
+    resources :workouts do
+      resources :exercises
+    end
   end
 
   devise_for :users
   root to: 'home#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
