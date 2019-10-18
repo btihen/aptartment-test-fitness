@@ -53,6 +53,8 @@ gem 'apartment', github: 'influitive/apartment', branch: 'development'
 group :development, :test do
   gem 'better_errors'
   gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
   gem 'guard'
   gem 'guard-livereload'
 end

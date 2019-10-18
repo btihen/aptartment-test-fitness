@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # very important to use the same domain 'lvh.me' in config/initializers/session_store.rb
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -13,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+    # FIX
     # be sure user stay in their subdomain - even if they try to switch
     def redirect_to_subdomain
       return if self.is_a?(DeviseController)
