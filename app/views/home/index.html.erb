@@ -1,2 +1,86 @@
-<h1>Welcome to <%= Rails.configuration.application_name %>!</h1>
-<p class="lead">Use this document as a way to quickly start any new project by generating files, installing gems, and more. </p>
+<% if !user_signed_in? %>
+
+  <!-- when NOT SIGNED IN -->
+  <% content_for :hero do %>
+    <section class="hero is-medium is-dark home-hero has-text-centered">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Welcome to <% Rails.configuration.application_name %>!
+          </h1>
+          <h2 class="subtitle">
+            Host your own workouts and share your results.
+          </h2>
+        </div>
+      </div>
+    </section>
+  <% end %>
+
+  <div class="columns is-multiline">
+    <div class="column">
+      <div class="content has-text-centered">
+
+        <% if has_subdomain || verify_subdomain_presence %>
+
+          <p class="subtitle is-4">
+            Ready to workout? <br/>
+            Record your efforts.
+          </p>
+          <%= link_to "Let's get going", workouts_path, class: 'button is-dark is-large' %>
+
+        <% else %>
+
+          <p class="subtitle is-4">
+            Ready to get in shape? <br/>
+            Start tracking your workouts.
+          </p>
+          <%= link_to "Let's do this", new_user_registration_path, class: 'button is-dark is-large' %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+<% else %>
+
+  <!-- when signed in -->
+  <% content_for :hero do %>
+    <section class="hero is-dark has-text-centered">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Welcome <%= current_user.name %>!
+          </h1>
+          <h2 class="subtitle">
+            <i>enjoy the platform.</i>
+            <br/><br/>
+            <%= link_to "All Workouts", workouts_path, class: "button" %>
+          </h2>
+        </div>
+      </div>
+      <!-- <div class="hero-foot">
+        <nav class="tabs">
+          <ul>
+            <li><%# link_to "View Workouts", workouts_path %></li>
+          </ul>
+        </nav>
+      </div> -->
+    </section>
+  <% end %>  <!-- hero -->
+
+  <div class="columns is-multiline">
+    <div class="column">
+      <div class="content has-text-centered">
+
+        <h3>Recent workouts</h3>
+        <div class="columns is-multiline">
+          <% @workouts.each do |workout| %>
+            <%= render 'workouts/workout', workout: workout %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<% end %>
